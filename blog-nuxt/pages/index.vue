@@ -1,33 +1,6 @@
 <script setup>
-// const formData = ref({
-//     email:  '',
-//     password: ''
-// })
+// definePageMeta({ layout: 'guest' })
 
-const email = ref('')
-const password = ref('')
-
-const login = async () => {
-  error.value = ''
-
-  try {
-    const response = await $fetch('http://127.0.0.1:8000/api/login', {
-      method: 'POST',
-      body: { email: email.value, password: password.value },
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    })
-
-    if (response.token) {
-      // Salvar o token em cookies ou localStorage
-      localStorage.setItem('authToken', response.token)
-      router.push('/posts') 
-    }
-  } catch (err) {
-    error.value = 'Login failed. Please check your credentials.'
-  }
-}
 </script>
 
 <template>
